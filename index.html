@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anuttaram 2025</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =========================
+           :root removed — variables replaced with fixed values
+           ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #0d0d0d;
+            /* --clr-bg-1 */
+            color: #e9eef6;
+            /* --clr-text */
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            position: relative;
+            overflow-x: hidden
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto
+        }
+
+        a {
+            font-family: inherit;
+            cursor: pointer
+        }
+
+        button {
+            font-family: inherit
+        }
+
+        /*particles container*/
+        #tsparticles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* particles hamesha peeche rahe */
+            pointer-events: none;
+            /* particles clicks ko block na kare */
+        }
+
+        /* nav bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 110px;
+            /* --nav-height */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px calc(clamp(1rem, 3.5vw, 3.5rem) - 8px);
+            /* --container-pad */
+            z-index: 2001;
+            background: rgba(8, 12, 18, .55);
+            border-bottom: 1px solid rgba(255, 255, 255, .04);
+            backdrop-filter: blur(4px)
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .brand img {
+            width: clamp(44px, 4.5vw, 80px);
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 4px 18px rgba(0, 180, 255, .12)
+        }
+
+        .brand h1 {
+            font-family: "Orbitron", sans-serif;
+            font-size: clamp(.9rem, 1.6vw, 1.2rem);
+            color: #00b4ff;
+            /* --clr-accent */
+            letter-spacing: .6px;
+            text-transform: uppercase
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            align-items: center
+        }
+
+        nav a {
+            color: #e9eef6;
+            /* --clr-text */
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 6px 2px;
+            transition: color .22s ease
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background: #00b4ff;
+            /* --clr-accent */
+            transition: width .28s ease
+        }
+
+        nav a:hover {
+            color: #00b4ff;
+            /* --clr-accent */
+        }
+
+        nav a:hover::after {
+            width: 100%
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        .countdown-nav {
+            font-size: clamp(.72rem, .9vw, .88rem);
+            font-weight: 700;
+            color: #00b4ff;
+            /* --clr-accent */
+            padding: .45rem .75rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 180, 255, .22);
+            background: rgba(0, 8, 12, .45)
+        }
+
+        /* hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            background: #111;
+            border: none
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 3px;
+            border-radius: 4px;
+            background: #eaf6ff;
+            transition: transform .35s ease, opacity .25s ease, background .25s ease
+        }
+
+        .hamburger.active span {
+            background: #00b4ff;
+            /* --clr-accent */
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px)
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(8px)
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px)
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 320px;
+            max-width: 84%;
+            background: linear-gradient(180deg, rgba(6, 8, 12, .98), rgba(10, 12, 18, .98));
+            transform: translateX(110%);
+            transition: transform .45s cubic-bezier(.68, -.55, .27, 1.55);
+            z-index: 1200;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+            padding-top: 120px;
+            box-shadow: -8px 0 30px rgba(0, 0, 0, .6)
+        }
+
+        .mobile-nav.open {
+            transform: translateX(0)
+        }
+
+        .mobile-nav a {
+            color: #e9eef6;
+            /* --clr-text */
+            font-size: 1.05rem;
+            font-weight: 600;
+            display: block;
+            padding: .5rem 1.25rem;
+            width: 100%;
+            text-align: left
+        }
+
+        .mobile-nav a:hover {
+            color: #00b4ff;
+            /* --clr-accent */
+            background: #111;
+            border-radius: 8px;
+            margin: 0 12px
+        }
+
+        .nav-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1150;
+            background: rgba(0, 0, 0, .32);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .28s ease
+        }
+
+        .nav-overlay.show {
+            opacity: 1;
+            pointer-events: auto
+        }
+
+        .live-update {
+            margin-top: 110px;
+            /* --nav-height */
+            width: 100%;
+            background: linear-gradient(90deg, #142836, #0f2a36);
+            color: #e9eef6;
+            /* --clr-text */
+            padding: .6rem .5rem;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 255, 255, .03);
+            border-bottom: 1px solid rgba(255, 255, 255, .03);
+            font-weight: 700;
+            font-size: clamp(.78rem, .9vw, .95rem);
+            text-align: center
+        }
+
+        .live-update .marquee {
+            display: inline-block;
+            white-space: nowrap;
+            will-change: transform;
+            animation: marquee 14s linear infinite
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(100%)
+            }
+
+            to {
+                transform: translateX(-100%)
+            }
+        }
+
+        /* hero section */
+        .hero {
+            min-height: calc(100vh - 110px);
+            /* --nav-height */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            padding: 48px 15%;
+            flex-wrap: wrap;
+        }
+
+        .hero .left {
+            max-width: 680px;
+            opacity: 0;
+            transform: translateX(-80px);
+            animation: slideFromLeft 4s ease-out forwards;
+        }
+
+        .hero h2 {
+            font-size: clamp(.85rem, 1.4vw, 1.05rem);
+            color: #9ad6ff;
+            font-weight: 700;
+            margin-bottom: .35rem;
+            letter-spacing: .6px
+        }
+
+        .hero h1 {
+            font-family: "Orbitron", sans-serif;
+            font-size: clamp(1.8rem, 5vw, 3.2rem);
+            margin: 6px 0 1rem;
+            color: #e9eef6;
+            /* --clr-text */
+            text-shadow: 0 4px 30px rgba(0, 180, 255, .06);
+            line-height: 1.02
+        }
+
+        .hero p {
+            color: #c6d8ea;
+            /* --clr-muted */
+            font-size: clamp(.92rem, 1.1vw, 1rem);
+            margin-bottom: 1rem;
+            max-width: 55ch
+        }
+
+        .hero .cta {
+            display: flex;
+            gap: .75rem;
+            flex-wrap: wrap;
+            align-items: center
+        }
+
+        .btn {
+            display: inline-block;
+            border: none;
+            padding: .6rem 1.1rem;
+            border-radius: 999px;
+            /* --radius-pill */
+            font-weight: 700;
+            cursor: pointer;
+            background: linear-gradient(90deg, #007acc, #00b4ff);
+            color: #fff;
+            box-shadow: 0 8px 30px rgba(0, 180, 255, .08);
+            /* --shadow-soft */
+            transition: transform .18s ease, box-shadow .18s ease
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, .06);
+            color: #d6eafc;
+            box-shadow: none
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 180, 255, .12)
+        }
+
+        .hero .logo-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            opacity: 0;
+            transform: translateX(80px);
+            animation: slideFromRight 1.6s ease-out forwards;
+            animation-delay: .5s
+        }
+
+        .hero .logo {
+            width: clamp(140px, 30vw, 600px);
+            height: auto;
+            border-radius: 20px;
+            object-fit: cover;
+            filter: drop-shadow(0 10px 40px rgba(0, 180, 255, .12));
+            animation: float 4s ease-in-out infinite
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-18px)
+            }
+        }
+
+        @keyframes slideFromLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0)
+            }
+        }
+
+        @keyframes slideFromRight {
+            to {
+                opacity: 1;
+                transform: translateX(0)
+            }
+        }
+
+        /* video + stats */
+        .video-stats {
+            display: flex;
+            gap: clamp(1.5rem, 3.5vw, 2.25rem);
+            align-items: center;
+            justify-content: center;
+            padding: clamp(1.75rem, 4vw, 3rem) clamp(1rem, 3.5vw, 3.5rem);
+            /* --container-pad */
+            flex-wrap: wrap;
+        }
+
+        .video {
+            flex: 1;
+            min-width: 280px
+        }
+
+        .video .video-wrap {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%
+        }
+
+        .video iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 14px;
+            border: 0;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, .6)
+                /* --shadow-strong */
+        }
+
+        .stats {
+            flex: 1;
+            min-width: 240px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: .9rem
+        }
+
+        .stat-box {
+            background: #111;
+            /* --clr-panel */
+            padding: 1rem;
+            border-radius: 10px;
+            /* --radius-lg */
+            text-align: center;
+            border: 1px solid rgba(0, 180, 255, .06);
+            font-weight: 700;
+            transition: transform .18s ease, box-shadow .18s ease
+        }
+
+        .stat-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 30px rgba(0, 180, 255, .08)
+                /* --shadow-soft */
+        }
+
+        .stat-box span {
+            display: block;
+            font-size: clamp(1.2rem, 2.6vw, 1.9rem);
+            color: #00b4ff;
+            /* --clr-accent */
+            margin-bottom: .35rem;
+            text-shadow: 0 6px 26px rgba(0, 180, 255, .06)
+        }
+
+        section {
+            padding: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 3.5vw, 3.5rem);
+            /* --container-pad */
+        }
+
+        h2.section-title {
+            font-family: "Orbitron", sans-serif;
+            font-size: clamp(1.1rem, 2.2vw, 1.65rem);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px
+        }
+
+        .see-all {
+            color: #00f3ff;
+            /* --clr-accent-2 */
+            font-weight: 700;
+            text-decoration: none;
+            font-size: clamp(.85rem, 1.1vw, .95rem)
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem
+        }
+
+        .highlight-card {
+            padding: 1rem;
+            background: #111;
+            /* --clr-panel */
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, .02)
+        }
+
+        .highlight-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: .5rem;
+            display: flex;
+            gap: .5rem;
+            align-items: center
+        }
+
+        .highlight-card p {
+            color: #c6d8ea;
+            /* --clr-muted */
+            margin-bottom: .5rem
+        }
+
+        .schedule {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.25rem
+        }
+
+        .day-card {
+            background: #111;
+            /* --clr-panel */
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, .02)
+        }
+
+        .day-card h3 {
+            margin-bottom: .5rem;
+            font-size: 1.05rem
+        }
+
+        .day-card ul {
+            list-style: none;
+            color: #c9dff0
+        }
+
+        .day-card li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px
+        }
+
+        .day-card li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            background: #00f3ff;
+            /* --clr-accent-2 */
+            border-radius: 50%
+        }
+
+        .sponsors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.1rem;
+            justify-content: center;
+            align-items: center;
+            padding-top: .75rem
+        }
+
+        .sponsor-card {
+            width: clamp(72px, 10vw, 110px);
+            height: clamp(72px, 10vw, 110px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            background: #111;
+            /* --clr-panel */
+            transition: transform .22s ease, filter .22s ease;
+            filter: grayscale(100%);
+            border: 1px solid rgba(255, 255, 255, .02)
+        }
+
+        .sponsor-card img {
+            max-width: 70%;
+            max-height: 70%;
+            object-fit: contain
+        }
+
+        .sponsor-card:hover {
+            transform: scale(1.08);
+            filter: grayscale(0%);
+            box-shadow: 0 18px 36px rgba(0, 180, 255, .04)
+        }
+
+        .video-stats,
+        .highlights,
+        .schedule,
+        .sponsors {
+            background: transparent !important;
+        }
+
+
+        footer {
+            background: linear-gradient(180deg, #07080b, #0b0f16);
+            padding: clamp(1.25rem, 3.5vw, 1.75rem) clamp(1rem, 3.5vw, 3.5rem);
+            /* --container-pad */
+            text-align: center;
+            color: #a8b9c9;
+            font-size: clamp(.88rem, 1vw, .95rem);
+            margin-top: 1.75rem
+        }
+
+        section:nth-of-type(odd) {
+            background: #000
+        }
+
+        section:nth-of-type(even) {
+            background: #111
+        }
+
+        .live-update .marquee:hover,
+        .live-update .marquee:focus {
+            animation-play-state: paused
+        }
+
+        a:focus,
+        button:focus {
+            outline: 3px solid rgba(0, 180, 255, .12);
+            outline-offset: 2px
+        }
+
+        @media (max-width:1024px) {
+            nav {
+                padding-inline: clamp(.9rem, 3vw, 1.8rem)
+            }
+
+            .hero {
+                padding-block: clamp(1.5rem, 4vw, 2.5rem)
+            }
+
+            .hero h1 {
+                font-size: clamp(1.6rem, 5.2vw, 2.6rem)
+            }
+        }
+
+        @media (max-width:768px) {
+            nav ul {
+                display: none
+            }
+
+            .hamburger {
+                display: flex
+            }
+
+            .hero {
+                padding-inline: clamp(.9rem, 6vw, 1.1rem);
+                gap: 1rem;
+                flex-direction: column;
+                text-align: center;
+                justify-content: space-evenly;
+            }
+
+            .hero .left,
+            .hero .logo-wrap {
+                transform: none;
+                opacity: 1
+            }
+
+            .hero .logo {
+                height: 250px;
+                width: 400px;
+            }
+
+            .video-stats {
+                padding-inline: clamp(.9rem, 4vw, 1rem)
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .section-padding {
+                padding-block: clamp(1.2rem, 3.2vw, 1.8rem)
+            }
+
+            .live-update {
+                margin-top: calc(110px);
+                /* --nav-height */
+                font-size: .9rem
+            }
+        }
+
+        @media (max-width:480px) {
+            nav {
+                height: 72px
+            }
+
+            /* nav-height reduced for small screens */
+
+            .brand h1 {
+                font-size: .95rem
+            }
+
+            .countdown-nav {
+                padding: .45rem .6rem;
+                font-size: .78rem
+            }
+
+            .hero h1 {
+                font-size: clamp(1.25rem, 7.5vw, 1.8rem)
+            }
+
+            .hero p {
+                font-size: .92rem
+            }
+
+            .video iframe {
+                height: 220px
+            }
+
+            .stats {
+                grid-template-columns: 1fr
+            }
+
+            .sponsor-card {
+                width: 84px;
+                height: 84px
+            }
+
+            .mobile-nav {
+                padding-top: 88px
+            }
+        }
+
+        @media (max-width:360px) {
+            .brand img {
+                width: 44px
+            }
+
+            .btn {
+                padding: .5rem .9rem;
+                font-size: .92rem
+            }
+
+            .hero p {
+                max-width: 40ch
+            }
+        }
+
+        @media (hover:hover) {
+            nav a:hover {
+                transform: translateY(-1px)
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- particles container -->
+    <div id="tsparticles" aria-hidden="true"></div>
+
+    <!-- NAV -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="brand" aria-hidden="false">
+            <img src="media/anuttaram4.jpg" alt="Anuttaram logo">
+            <h1>Anuttaram</h1>
+        </div>
+
+        <ul role="menubar" aria-label="Primary menu">
+            <li role="none"><a role="menuitem" href="#">Home</a></li>
+            <li role="none"><a role="menuitem" href="#about">About</a></li>
+            <li role="none"><a role="menuitem" href="#events">Events</a></li>
+            <li role="none"><a role="menuitem" href="#gallery">Gallery</a></li>
+            <li role="none"><a role="menuitem" href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <div class="countdown-nav" id="countdown-nav" aria-live="polite">Starts in: --</div>
+
+            <!-- hamburger for mobile -->
+            <button class="hamburger" aria-label="Open menu" aria-expanded="false" id="hambtn">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- overlay for outside click (visible when nav open) -->
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+    <!-- mobile nav slide-in -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <a href="#" data-stagger="1">Home</a>
+        <a href="#about" data-stagger="2">About</a>
+        <a href="#events" data-stagger="3">Events</a>
+        <a href="#gallery" data-stagger="4">Gallery</a>
+        <a href="#contact" data-stagger="5">Contact</a>
+    </div>
+
+    <!-- live update (CSS-based marquee) -->
+    <div class="live-update" role="status" aria-live="polite">
+        <div class="marquee">🔵 Live update: Registration closes 18 Sept • Early bird slots ending soon • Workshops
+            updated — Check Schedule</div>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero" role="banner">
+        <div class="left">
+            <h2>22–23 SEPTEMBER 2025 • CAMPUS</h2>
+            <h1>Anuttaram 2025</h1>
+            <p>The biggest technical & cultural fest of Government Engineering College Sheohar. Join us for innovation,
+                competitions, workshops, and unforgettable cultural nights.</p>
+
+            <div class="cta">
+                <button class="btn" onclick="location.href='register.html'">Register Now</button>
+                <button class="btn secondary"
+                    onclick="document.getElementById('events').scrollIntoView({behavior:'smooth'})">Explore
+                    Events</button>
+            </div>
+        </div>
+
+        <div class="logo-wrap" aria-hidden="false">
+            <img class="logo" src="media/demo.png" alt="Anuttaram circular logo">
+        </div>
+    </header>
+
+    <!-- video + stats -->
+    <section class="video-stats" id="events" aria-labelledby="eventsHeading">
+        <div class="video" aria-hidden="false">
+            <div class="video-wrap">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Promo Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="stats" aria-hidden="false" role="list" aria-label="Event statistics">
+            <div class="stat-box" role="listitem"><span>48+</span> Projects Completed</div>
+            <div class="stat-box" role="listitem"><span>1200+</span> Total Participants</div>
+            <div class="stat-box" role="listitem"><span>₹50K+</span> Prizes Worth</div>
+            <div class="stat-box" role="listitem"><span>17+</span> Total Events</div>
+        </div>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section aria-labelledby="highlightsHeading">
+        <h2 class="section-title" id="highlightsHeading">Highlights <a class="see-all" href="#schedule">See all events
+                →</a></h2>
+
+        <div class="highlights">
+            <article class="highlight-card" aria-labelledby="h1">
+                <h3 id="h1">💡 Hackathon</h3>
+                <p>48-hour hackathon — prototype and pitch to industry mentors.</p>
+                <a href="#" aria-label="Learn more about Hackathon">Learn more →</a>
+            </article>
+
+            <article class="highlight-card" aria-labelledby="h2">
+                <h3 id="h2">🧠 Technical Quiz</h3>
+                <p>Team-based rapid-fire & problem solving quiz for tech enthusiasts.</p>
+                <a href="#" aria-label="Learn more about Technical Quiz">Learn more →</a>
+            </article>
+
+            <article class="highlight-card" aria-labelledby="h3">
+                <h3 id="h3">🎮 E-Sports</h3>
+                <p>Competitive tournaments with live streaming & cash prizes.</p>
+                <a href="#" aria-label="Learn more about E-Sports">Learn more →</a>
+            </article>
+
+            <article class="highlight-card" aria-labelledby="h4">
+                <h3 id="h4">🎨 Design Challenges</h3>
+                <p>UI/UX & branding contests judged by industry designers.</p>
+                <a href="#" aria-label="Learn more about Design Challenges">Learn more →</a>
+            </article>
+
+            <article class="highlight-card" aria-labelledby="h5">
+                <h3 id="h5">🔗 IoT Fusion</h3>
+                <p>Hands-on IoT projects, sensors & cloud integrations.</p>
+                <a href="#" aria-label="Learn more about IoT Fusion">Learn more →</a>
+            </article>
+
+            <article class="highlight-card" aria-labelledby="h6">
+                <h3 id="h6">🌸 Cultural Crafts</h3>
+                <p>Local crafts, stalls and cultural performances.</p>
+                <a href="#" aria-label="Learn more about Cultural Crafts">Learn more →</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule" aria-labelledby="scheduleHeading">
+        <h2 class="section-title" id="scheduleHeading">Quick Schedule <a class="see-all" href="#">See full schedule
+                →</a></h2>
+
+        <div class="schedule">
+            <div class="day-card" role="article" aria-labelledby="d1">
+                <h3 id="d1">Day 01</h3>
+                <ul>
+                    <li>Rangoli Event — To be Announced</li>
+                    <li>Inauguration — To be Announced</li>
+                    <li>Technical Quiz — To be Announced</li>
+                </ul>
+            </div>
+
+            <div class="day-card" role="article" aria-labelledby="d2">
+                <h3 id="d2">Day 02</h3>
+                <ul>
+                    <li>Hackathon problem share — To be Announced</li>
+                    <li>Crafting & Stall Decoration — To be Announced</li>
+                    <li>Web Designing — To be Announced</li>
+                </ul>
+            </div>
+
+            <div class="day-card" role="article" aria-labelledby="d3">
+                <h3 id="d3">Day 03</h3>
+                <ul>
+                    <li>Hackathon — To be Announced</li>
+                    <li>Videography — To be Announced</li>
+                    <li>Crosswords — To be Announced</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPONSORS -->
+    <section aria-labelledby="sponsorsHeading">
+        <h2 class="section-title" id="sponsorsHeading">Sponsors <a class="see-all" href="#">Media kit →</a></h2>
+
+        <div class="sponsors" aria-hidden="false">
+            <div class="sponsor-card"><img src="https://via.placeholder.com/80?text=S1" alt="Sponsor 1"></div>
+            <div class="sponsor-card"><img src="https://via.placeholder.com/80?text=S2" alt="Sponsor 2"></div>
+            <div class="sponsor-card"><img src="https://via.placeholder.com/80?text=S3" alt="Sponsor 3"></div>
+            <div class="sponsor-card"><img src="https://via.placeholder.com/80?text=S4" alt="Sponsor 4"></div>
+            <div class="sponsor-card"><img src="https://via.placeholder.com/80?text=S5" alt="Sponsor 5"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p>© 2025 Anuttaram • Government Engineering College Sheohar</p>
+        <p>Follow us: <a href="#" aria-label="Facebook">Facebook</a> • <a href="#" aria-label="Instagram">Instagram</a>
+            • <a href="#" aria-label="LinkedIn">LinkedIn</a></p>
+    </footer>
+
+    <!-- ---------------- Scripts ---------------- -->
+    <!-- tsparticles (unchanged) -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script>
+        tsParticles.load("tsparticles", {
+            background: { color: { value: "transparent" } },
+            fpsLimit: 60,
+            particles: {
+                number: { value: 70, density: { enable: true, area: 900 } },
+                color: { value: "#00b4ff" },
+                shape: { type: "circle" },
+                opacity: { value: 0.8, random: { enable: true, minimumValue: 0.25 }, animation: { enable: true, speed: 1, minimumValue: 0.2 } },
+                size: { value: { min: 2, max: 6 }, random: true, animation: { enable: true, speed: 4, minimumValue: 0.2 } },
+                links: { enable: true, distance: 160, color: "#00b4ff", opacity: 0.18, width: 1.2 },
+                move: { enable: true, speed: 2.2, direction: "none", random: true, straight: false, outModes: { default: "out" } }
+            },
+            interactivity: {
+                detectsOn: "canvas",
+                events: {
+                    onHover: { enable: true, mode: "repulse" },
+                    onClick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    repulse: { distance: 180, duration: 0.6 },
+                    push: { quantity: 4 }
+                }
+            },
+            detectRetina: true
+        });
+    </script>
+
+    <script>
+        /* ------------------ countdown timer ------------------ */
+        (function () {
+            const el = document.getElementById("countdown-nav");
+            const fest = new Date("September 22, 2025 09:00:00").getTime();
+
+            function update() {
+                const now = Date.now();
+                let diff = fest - now;
+                if (diff <= 0) { el.textContent = "🎉 Fest Started!"; return; }
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+                el.textContent = `Starts in: ${d}d ${h}h ${m}m ${s}s`;
+            }
+            update();
+            setInterval(update, 1000);
+        })();
+
+        /* ------------------ mobile nav toggle + stagger + outside click ------------------ */
+        (function () {
+            const hamb = document.getElementById("hambtn");
+            const mobile = document.getElementById("mobileNav");
+            const overlay = document.getElementById("navOverlay");
+            const links = mobile.querySelectorAll("a[data-stagger]");
+
+            function openMenu() {
+                mobile.classList.add("open");
+                overlay.classList.add("show");
+                hamb.classList.add("active");
+                hamb.setAttribute("aria-expanded", "true");
+                mobile.setAttribute("aria-hidden", "false");
+                overlay.setAttribute("aria-hidden", "false");
+                // stagger reveal
+                links.forEach((a, i) => {
+                    a.style.transitionDelay = `${i * 60}ms`;
+                    a.setAttribute("data-shown", "1");
+                });
+            }
+
+            function closeMenu() {
+                mobile.classList.remove("open");
+                overlay.classList.remove("show");
+                hamb.classList.remove("active");
+                hamb.setAttribute("aria-expanded", "false");
+                mobile.setAttribute("aria-hidden", "true");
+                overlay.setAttribute("aria-hidden", "true");
+                links.forEach((a) => { a.style.transitionDelay = ``; a.removeAttribute("data-shown"); });
+            }
+
+            hamb.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (mobile.classList.contains("open")) closeMenu(); else openMenu();
+            });
+
+            // close mobile nav on link click
+            links.forEach(a => a.addEventListener("click", () => closeMenu()));
+
+            // close on Escape
+            document.addEventListener("keydown", e => { if (e.key === "Escape") closeMenu(); });
+
+            // close on outside click (overlay or outside area)
+            overlay.addEventListener("click", closeMenu);
+            document.addEventListener("click", (e) => {
+                if (mobile.classList.contains("open") && !mobile.contains(e.target) && !hamb.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+        })();
+
+        /* small accessibility improvement: pause marquee on hover/focus */
+        (function () {
+            const marquee = document.querySelector(".live-update .marquee");
+            if (!marquee) return;
+            marquee.addEventListener("mouseenter", () => marquee.style.animationPlayState = "paused");
+            marquee.addEventListener("mouseleave", () => marquee.style.animationPlayState = "running");
+            marquee.addEventListener("focusin", () => marquee.style.animationPlayState = "paused");
+            marquee.addEventListener("focusout", () => marquee.style.animationPlayState = "running");
+        })();
+    </script>
+</body>
+
+</html>
