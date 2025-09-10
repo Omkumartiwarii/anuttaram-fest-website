@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anuttaram 2025</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <!-- social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/particles.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/mobile-nav.css">
+    <link rel="stylesheet" href="css/countdown-timer.css">
+    <link rel="stylesheet" href="css/live-update.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+</head>
+
+<body>
+    <!-- particles container -->
+    <div id="tsparticles" aria-hidden="true"></div>
+
+    <!-- NAV -->
+    <nav>
+        <div class="brand flex items-center gap-2">
+            <img src="media/anuttaram4.jpg" alt="Anuttaram logo" class="w-10 h-10">
+            <h1 class="text-white font-bold">Anuttaram</h1>
+        </div>
+
+        <!-- Desktop nav -->
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <div class="countdown-nav" id="countdown-nav" aria-live="polite">Starts in: --</div>
+
+            <!-- hamburger for mobile -->
+            <button class="hamburger" aria-label="Open menu" aria-expanded="false" id="hambtn">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <!-- Hamburger -->
+        <!-- <button class="hamburger" id="hambtn" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button> -->
+    </nav>
+
+    <!-- Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <a href="#" data-stagger="1">Home</a>
+        <a href="#about" data-stagger="2">About</a>
+        <a href="#events" data-stagger="3">Events</a>
+        <a href="#gallery" data-stagger="4">Gallery</a>
+        <a href="#contact" data-stagger="5">Contact</a>
+    </div>
+
+    <!-- end mobile nav -->
+
+    <!-- live update (CSS-based marquee) -->
+    <div class="live-update" role="status" aria-live="polite">
+        <div class="marquee">🔵 Live update: Registration closes 18 Sept • Early bird slots ending soon • Workshops
+            updated — Check Schedule</div>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero" role="banner">
+        <div class="left">
+            <h2>22–23 SEPTEMBER 2025 • CAMPUS</h2>
+            <h1>Anuttaram 2025</h1>
+            <p>The biggest technical & cultural fest of Government Engineering College Sheohar. Join us for innovation,
+                competitions, workshops, and unforgettable cultural nights.</p>
+
+            <div class="cta">
+                <button class="btn" onclick="location.href='register.html'">Register Now</button>
+                <button class="btn secondary"
+                    onclick="document.getElementById('events').scrollIntoView({behavior:'smooth'})">Explore
+                    Events</button>
+            </div>
+        </div>
+
+        <div class="logo-wrap" aria-hidden="false">
+            <img class="logo" src="media/demo.png" alt="Anuttaram circular logo">
+        </div>
+    </header>
+
+    <!-- video + stats -->
+    <section class="video-stats" id="events" aria-labelledby="eventsHeading">
+        <div class="video" aria-hidden="false">
+            <div class="video-wrap">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Promo Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="stats" aria-hidden="false" role="list" aria-label="Event statistics">
+            <div class="stat-box" role="listitem"><span>48+</span> Projects Completed</div>
+            <div class="stat-box" role="listitem"><span>1200+</span> Total Participants</div>
+            <div class="stat-box" role="listitem"><span>₹50K+</span> Prizes Worth</div>
+            <div class="stat-box" role="listitem"><span>17+</span> Total Events</div>
+        </div>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section aria-labelledby="highlightsHeading">
+        <h2 class="section-title" id="highlightsHeading">Highlights <a class="see-all" href="#schedule">See all Highlights
+                →</a></h2>
+
+        <div class="highlights">
+            <article class="highlight-card" aria-labelledby="h1">
+                <h3 id="h1">💡 Hackathon</h3>
+                <p>48-hour hackathon — prototype and pitch to industry mentors.</p>
+                <a href="#" aria-label="Learn more about Hackathon">Learn more →</a>
+            </article>
+
+            <article class="highlight-card" aria-labelledby="h2">
+                <h3 id="h2">🧠 Technical Quiz</h3>
+                <p>Team-based rapid-fire & problem solving quiz for tech enthusiasts.</p>
+                <a href="#" aria-label="Learn more about Technical Quiz">Learn more →</a>
+            </article>
+
+            <article class="highlight-card" aria-labelledby="h3">
+                <h3 id="h3">🎮 E-Sports</h3>
+                <p>Competitive tournaments with live streaming & cash prizes.</p>
+                <a href="#" aria-label="Learn more about E-Sports">Learn more →</a>
+            </article>
+
+            <article class="highlight-card" aria-labelledby="h4">
+                <h3 id="h4">🎨 Design Challenges</h3>
+                <p>UI/UX & branding contests judged by industry designers.</p>
+                <a href="#" aria-label="Learn more about Design Challenges">Learn more →</a>
+            </article>
+
+            <article class="highlight-card" aria-labelledby="h5">
+                <h3 id="h5">🔗 IoT Fusion</h3>
+                <p>Hands-on IoT projects, sensors & cloud integrations.</p>
+                <a href="#" aria-label="Learn more about IoT Fusion">Learn more →</a>
+            </article>
+
+            <article class="highlight-card" aria-labelledby="h6">
+                <h3 id="h6">🌸 Cultural Crafts</h3>
+                <p>Local crafts, stalls and cultural performances.</p>
+                <a href="#" aria-label="Learn more about Cultural Crafts">Learn more →</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule" aria-labelledby="scheduleHeading">
+        <h2 class="section-title" id="scheduleHeading">Quick Schedule <a class="see-all" href="#">See full schedule
+                →</a></h2>
+
+        <div class="schedule">
+            <div class="day-card" role="article" aria-labelledby="d1">
+                <h3 id="d1">Day 01</h3>
+                <ul>
+                    <li>Rangoli Event — To be Announced</li>
+                    <li>Inauguration — To be Announced</li>
+                    <li>Technical Quiz — To be Announced</li>
+                </ul>
+            </div>
+
+            <div class="day-card" role="article" aria-labelledby="d2">
+                <h3 id="d2">Day 02</h3>
+                <ul>
+                    <li>Hackathon problem share — To be Announced</li>
+                    <li>Crafting & Stall Decoration — To be Announced</li>
+                    <li>Web Designing — To be Announced</li>
+                </ul>
+            </div>
+
+            <div class="day-card" role="article" aria-labelledby="d3">
+                <h3 id="d3">Day 03</h3>
+                <ul>
+                    <li>Hackathon — To be Announced</li>
+                    <li>Videography — To be Announced</li>
+                    <li>Crosswords — To be Announced</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- Winners -->
+    <!-- Winners -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Winners</h2>
+            <a class="see-all" href="#">See all winners →</a>
+        </div>
+        <div class="winners-grid">
+            <div class="winner-card">
+                <img src="media/me.png" alt="Winner">
+                <p>Hackathon</p>
+            </div>
+            <div class="winner-card">
+                <img src="media/me.png" alt="Winner">
+                <p>Blind Coding</p>
+            </div>
+            <div class="winner-card">
+                <img src="media/me.png" alt="Winner">
+                <p>Coding</p>
+            </div>
+            <div class="winner-card">
+                <img src="media/me.png" alt="Winner">
+                <p>Debate</p>
+            </div>
+            <div class="winner-card">
+                <img src="media/me.png" alt="Winner">
+                <p>SA Writing</p>
+            </div>
+            <div class="winner-card">
+                <img src="media/me.png" alt="Winner">
+                <p>Speech</p>
+            </div>
+            <div class="winner-card">
+                <img src="media/me.png" alt="Winner">
+                <p>Quiz</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Gallery</h2>
+            <a class="see-all" href="#">See all photos →</a>
+        </div>
+        <div class="gallery">
+            <img src="media/anuttaram.jpg" alt="Gallery 1">
+            <img src="media/anuttaram2.jpg" alt="Gallery 2">
+            <img src="media/anuttaram4.jpg" alt="Gallery 3">
+            <img src="media/anuttaram1.jpeg" alt="Gallery 4">
+        </div>
+    </section>
+
+    <!-- SPONSORS -->
+    <section aria-labelledby="sponsorsHeading">
+        <h2 class="section-title" id="sponsorsHeading">Sponsors <a class="see-all" href="#">Media kit →</a></h2>
+
+        <div class="sponsors" aria-hidden="false">
+            <div class="sponsor-card"><img src="https://via.placeholder.com/80?text=S1" alt="Sponsor 1"></div>
+            <div class="sponsor-card"><img src="https://via.placeholder.com/80?text=S2" alt="Sponsor 2"></div>
+            <div class="sponsor-card"><img src="https://via.placeholder.com/80?text=S3" alt="Sponsor 3"></div>
+            <div class="sponsor-card"><img src="https://via.placeholder.com/80?text=S4" alt="Sponsor 4"></div>
+            <div class="sponsor-card"><img src="https://via.placeholder.com/80?text=S5" alt="Sponsor 5"></div>
+        </div>
+    </section>
+
+    <!-- community -->
+    <section class="community">
+        <h3>Be the part of our community</h3>
+        <p>Follow for updates, teasers, and behind-the-scenes.</p>
+        <div class="social-icon">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-main">
+            <div class="footer-col">
+                <h6>About</h6>
+                <p>We provide quality education and encourage students to participate in sports.</p>
+            </div>
+
+            <div class="footer-col">
+                <h6>Contacts</h6>
+                <p>Email: <a href="mailto:gecsheohar@gmail.com">gecsheohar@gmail.com</a></p>
+                <p>Phone: +91-1234567890</p>
+            </div>
+
+            <div class="footer-col">
+                <h6>Find Us On</h6>
+                <div class="social-links">
+                    <a href="https://x.com/gecsheohar" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/share/19nrqgAKTz/" target="_blank"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/gec_sheohar" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://in.linkedin.com/in/omkumar00116" target="_blank"><i
+                            class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h6>Location</h6>
+                <p>
+                    Government Engineering College Sheohar,<br>
+                    Chhatauna Bisunpur, Block- Piprahi, Sheohar,<br>
+                    Bihar, Pin Code-843329<br>
+                    Mob- 09031085516
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2025 Government Engineering College Sheohar — All Rights Reserved.
+        </div>
+    </footer>
+
+
+    <!-- script -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/countdown-timer.js"></script>
+    <script src="js/live-update.js"></script>
+    <script src="js/mobile-nav.js"></script>
+    <script src="js/imageopen.js"></script>
+
+
+</body>
+
+</html>
